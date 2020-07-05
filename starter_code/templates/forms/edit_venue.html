@@ -5,7 +5,7 @@
     <form class="form" method="post" action="/venues/{{venue.id}}/edit">
       <h3 class="form-heading">Edit venue <em>{{ venue.name }}</em> <a href="{{ url_for('index') }}" title="Back to homepage"><i class="fa fa-home pull-right"></i></a></h3>
       <div class="form-group">
-        <label for="name">Name</label>
+        <label id=name">Name</label>
         {{ form.name(class_ = 'form-control', autofocus = true) }}
       </div>
       <div class="form-group">
@@ -20,21 +20,21 @@
           </div>
       </div>
       <div class="form-group">
-        <label for="address">Address</label>
+        <label id=address">Address</label>
         {{ form.address(class_ = 'form-control', autofocus = true) }}
       </div>
       <div class="form-group">
-          <label for="phone">Phone</label>
+          <label id=phone">Phone</label>
           {{ form.phone(class_ = 'form-control', placeholder='xxx-xxx-xxxx', autofocus = true) }}
         </div>
       <div class="form-group">
-        <label for="genres">Genres</label>
+        <label id=genres">Genres</label>
         <small>Ctrl+Click to select multiple</small>
-        {{ form.genres(class_ = 'form-control', placeholder='Genres, separated by commas', id=form.state, autofocus = true) }}
+        {{ form.genres(class_ = 'form-control', placeholder='Genres, separated by commas', id=form.genres, autofocus = true) }}
       </div>
       <div class="form-group">
-          <label for="genres">Facebook Link</label>
-          {{ form.facebook_link(class_ = 'form-control', placeholder='http://', id=form.state, autofocus = true) }}
+          <label id=facebook_link">Facebook Link</label>
+          {{ form.facebook_link(class_ = 'form-control', placeholder='http://', id=form.facebook_link, autofocus = true) }}
         </div>
       <input type="submit" value="Edit Venue" class="btn btn-primary btn-lg btn-block">
     </form>
