@@ -24,7 +24,7 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-# TODO: connect to a local postgresql database    ## done ##
+# TODO: connect to a local postgresql database                ####################3## done ################
 
 # ----------------------------------------------------------------------------#
 # Models.
@@ -56,8 +56,7 @@ class Venue(db.Model):
     seeking_description = db.Column(db.String())
     shows = db.relationship("Show", backref='venues', lazy=True)
 
-    # TODO: implement any missing fields, as a database migration using Flask-Migrate
-    #  ### may done ###
+    # TODO: implement any missing fields, as a database migration using Flask-Migrate  ######## may done ###
 
 
 class Artist(db.Model):
@@ -76,11 +75,7 @@ class Artist(db.Model):
     seeking_description = db.Column(db.String())
     shows = db.relationship("Show", backref='artists', lazy=True)
 
-
-    # TODO: implement any missing fields, as a database migration using Flask-Migrate
-    #  ### may done ###
-
-
+    # TODO: implement any missing fields, as a database migration using Flask-Migrate    ###### may done ###
 # TODO Implement Show and Artist models, and complete all model relationships and properties, as a database migration.
 
 
@@ -112,18 +107,12 @@ def index():
 #  Venues
 #  ----------------------------------------------------------------
 
-@app.route('/venues')
+@app.route('/venues')                                                ################  done  ################
 def venues():
     # TODO: replace with real venues data.
     #       num_shows should be aggregated based on number of upcoming shows per venue.
     venues_list = Venue.query.all()
-    print(venues_list)
-    cities = [venue.city for venue in venues_list]
-    states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA',
-                'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MT', 'NE',
-                'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'MD',
-                'MA', 'MI', 'MN', 'MS','MO','PA','RI', 'SC', 'SD','TN', 'TX', 'UT',
-                'VT','VA', 'WA', 'WV', 'WI', 'WY' ]
+
     data = []
     selected_venues_id = []
     for i in range(len(venues_list)):
@@ -327,7 +316,7 @@ def search_artists():
                            search_term=request.form.get('search_term', ''))
 
 
-@app.route('/artists/<int:artist_id>')                     ####################  done ############
+@app.route('/artists/<int:artist_id>')                               ####################  done ############
 def show_artist(artist_id):
     # shows the venue page with the given venue_id
     # TODO: replace with real venue data from the venues table, using venue_id
@@ -426,7 +415,6 @@ def edit_venue_submission(venue_id):
     data = request.form
     venue = Venue.query.get(venue_id)
 
-    # venue.id = venue_id
     venue.name = data['name']
     venue.genres = data['genres']
     venue.address = data['address']
@@ -481,7 +469,7 @@ def create_artist_submission():
 #  Shows
 #  ----------------------------------------------------------------
 
-@app.route('/shows')                                    #################### done #################
+@app.route('/shows')                                                #################### done #################
 def shows():
     # displays list of shows at /shows
     # TODO: replace with real venues data.
@@ -510,7 +498,7 @@ def create_shows():
     return render_template('forms/new_show.html', form=form)
 
 
-@app.route('/shows/create', methods=['POST'])          ##############   done   #####################
+@app.route('/shows/create', methods=['POST'])                     ##############   done   #####################
 def create_show_submission():
     # called to create new shows in the db, upon submitting new show listing form
     # TODO: insert form data as a new Show record in the db, instead
